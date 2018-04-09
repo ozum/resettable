@@ -1,6 +1,6 @@
 {
   "name": "resettable",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description":
     "Reset object to its original state using JSON Patch with less strict rules. Maybe used to undo auto generated configuration data.",
   "main": "lib/index.js",
