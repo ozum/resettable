@@ -1,0 +1,55 @@
+{
+  "name": "resettable",
+  "version": "0.0.1",
+  "description":
+    "Reset object to its original state using JSON Patch with less strict rules. Maybe used to undo auto generated configuration data.",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "moe-scripts build",
+    "build:doc": "moe-scripts doc --no-cache",
+    "commit": "moe-scripts commit",
+    "file": "f() { P=$1; P=${P/src/lib}; P=${P/.ts/.js}; tsc-watch --onSuccess \"node -r source-map-support/register ${P}\"; }; f",
+    "format": "moe-scripts format",
+    "lint": "moe-scripts lint",
+    "prepublishOnly": "npm run build",
+    "release": "git checkout master && git pull origin master && standard-version && git push --follow-tags origin master && npm publish",
+    "squash": "BRANCH=`git rev-parse --abbrev-ref HEAD` && git checkout master && git merge --squash $BRANCH && npm run commit",
+    "test": "moe-scripts test",
+    "test:update": "moe-scripts test --updateSnapshot",
+    "validate": "moe-scripts validate",
+    "watch": "concurrently 'npm run build -- --watch' 'npm run test -- --watch' | awk '{gsub(/\\033c/,\"\") system(\"\")}1'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ozum/resettable.git"
+  },
+  "keywords": ["reset", "object", "config", "undo", "auto generate"],
+  "author": {
+    "name": "Özüm Eldoğan"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ozum/resettable/issues"
+  },
+  "homepage": "https://github.com/ozum/resettable#readme",
+  "readme": "README.md",
+  "devDependencies": {
+    "@types/lodash.get": "^4.4.3",
+    "@types/lodash.has": "^4.5.3",
+    "@types/lodash.isequal": "^4.5.2",
+    "@types/lodash.isplainobject": "^4.0.3",
+    "@types/lodash.set": "^4.3.3",
+    "moe-scripts": "0.0.52"
+  },
+  "dependencies": {
+    "jiff": "^0.7.3",
+    "json8-pointer": "^0.7.1",
+    "lodash.get": "^4.4.2",
+    "lodash.has": "^4.5.2",
+    "lodash.isequal": "^4.5.0",
+    "lodash.isplainobject": "^4.0.6",
+    "lodash.set": "^4.3.2"
+  },
+  "_id": "resettable@0.0.1"
+}
