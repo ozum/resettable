@@ -1,6 +1,6 @@
 <!-- DO NOT EDIT README.md (It will be overridden by README.hbs) -->
 
-# resettable
+# resettable-object
 
 Reset object to its original state using JSON Patch with less strict rules. Maybe used to undo auto generated configuration data.
 
@@ -12,6 +12,8 @@ Reset object to its original state using JSON Patch with less strict rules. Mayb
 
 * [Description](#description)
 * [Synopsis](#synopsis)
+  * [Modify `package.json` file](#modify-packagejson-file)
+  * [Reset `package.json` to its original state](#reset-packagejson-to-its-original-state)
 * [API](#api)
   * [Functions](#functions)
   * [Typedefs](#typedefs)
@@ -25,9 +27,41 @@ Reset object to its original state using JSON Patch with less strict rules. Mayb
 
 # Description
 
+Provide functions to get diff of two objects and use that diff to reset object into its original state. Uses less strict rules than JSON Patch. Maybe used to undo auto generated configuration data.
+
 # Synopsis
 
+## Modify `package.json` file
+
 ```js
+import { mayChange, diff, reset, clone } from "resettable";
+import fs from "fs";
+import isEqual from "lodash.isEqual";
+
+const originalPkg = JSON.parse(fs.readFileSync(`${__dirname}/../package.json`, "utf8")); // Read package.json
+const pkg: any = clone(originalPkg); // Clone it for changes.
+pkg.scripts.myScript = "echo 1"; // Add some script.
+
+// Look if scripts.test can be changed safely. (Not same with "test in scripts", See API.)
+if (mayChange(pkg, originalPkg, "scripts.test")) {
+  pkg.scripts.test = "test-different";
+}
+
+const patch = diff(pkg, originalPkg);
+
+fs.writeFileSync(`${__dirname}/../package.json`, JSON.stringify(pkg, undefined, 2)); // Write package.json
+fs.writeFileSync(`${__dirname}/../patch.json`, JSON.stringify(patch, undefined, 2)); // Write patch.json
+```
+
+## Reset `package.json` to its original state
+
+```js
+const pkgFromDisk = JSON.parse(fs.readFileSync(`${__dirname}/../package.json`, "utf8")); // Read package.json
+const patchFromDisk = JSON.parse(fs.readFileSync(`${__dirname}/../patch.json`, "utf8")); // Read package.json
+reset(pkgFromDisk, patchFromDisk);
+
+fs.writeFileSync(`${__dirname}/../package.json`, JSON.stringify(pkgFromDisk, undefined, 2)); // Write package.json
+fs.writeFileSync(`${__dirname}/../patch.json`, JSON.stringify({}, undefined, 2)); // Clear patch.json
 ```
 
 # API
