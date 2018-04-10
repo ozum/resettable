@@ -13,18 +13,6 @@ const CHECK = "\u001b[32;1m✔\u001b[0m"; // Green ✔
 const CROSS = "\u001b[31;1m✘\u001b[0m"; // Red ✘
 const WARN = "\u001b[33;1mO\u001b[0m"; // Yellow: O
 
-// function log(action: string, willChange: boolean, path: Array<string | number>, oldValue?: any, newValue?: any) {
-//   const level = willChange ? "info" : "warn";
-//   const title = willChange ? `${action} Key` : `Not ${action} Key`;
-//   const old = oldValue !== undefined ? "  Old --> " + inspect(oldValue, { depth: null }) : "";
-//   const value = newValue !== undefined ? `${old !== "" ? "\n" : ""}  New --> ${inspect(newValue, { depth: null })}` : "";
-//   const name = this.name ? ` in ${this.name}` : "";
-//   const infoMessage = `[${title}] ${path.join(".")}${name}`;
-//   const debugMessage = `${old}${value}`;
-//   this.logger[level](infoMessage);
-//   this.logger.debug(debugMessage);
-// }
-
 /**
  * Recursivly cleans all empty arrays and objects. Mutates given object.
  * @private
