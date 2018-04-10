@@ -5,6 +5,7 @@
     "Reset object to its original state using JSON Patch with less strict rules. Maybe used to undo auto generated configuration data.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "files": ["lib", "bin"],
   "scripts": {
     "build": "moe-scripts build",
     "build:doc": "moe-scripts doc --no-cache",
