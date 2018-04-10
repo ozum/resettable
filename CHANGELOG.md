@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.1.10"></a>
+
+## [0.1.10](https://github.com/ozum/resettable/compare/v0.1.9...v0.1.10) (2018-04-10)
+
+### Bug Fixes
+
+* allow empty object to be passed diff and reset functions ([8f379a9](https://github.com/ozum/resettable/commit/8f379a9))
+
 <a name="0.1.9"></a>
 
 ## [0.1.9](https://github.com/ozum/resettable/compare/v0.1.8...v0.1.9) (2018-04-10)
