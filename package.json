@@ -1,6 +1,6 @@
 {
   "name": "resettable",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "description":
     "Reset object to its original state using JSON Patch with less strict rules. Maybe used to undo auto generated configuration data.",
   "main": "lib/index.js",
@@ -13,7 +13,7 @@
     "file": "f() { P=$1; P=${P/src/lib}; P=${P/.ts/.js}; tsc-watch --onSuccess \"node -r source-map-support/register ${P}\"; }; f",
     "format": "moe-scripts format",
     "lint": "moe-scripts lint",
-    "xprepublishOnly": "npm run build",
+    "prepublishOnly": "npm run build",
     "release": "git checkout master && git pull origin master && standard-version && git push --follow-tags origin master && npm publish",
     "squash": "BRANCH=`git rev-parse --abbrev-ref HEAD` && git checkout master && git merge --squash $BRANCH && npm run commit",
     "test": "moe-scripts test",
@@ -41,7 +41,7 @@
     "@types/lodash.isequal": "^4.5.2",
     "@types/lodash.isplainobject": "^4.0.3",
     "@types/lodash.set": "^4.3.3",
-    "moe-scripts": "0.0.52"
+    "moe-scripts": "0.0.54"
   },
   "dependencies": {
     "jiff": "^0.7.3",
