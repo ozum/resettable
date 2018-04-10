@@ -77,6 +77,14 @@ describe("reset", () => {
       expect(b).toEqual(a);
       expect(unApplied.length).toBe(0);
     });
+
+    it("should reset undefined", () => {
+      const a = undefined;
+      const b = { name: "Julia", favorite: "blue" };
+      const unApplied = reset(b, diff(b, a));
+      expect(b).toEqual({});
+      expect(unApplied.length).toBe(0);
+    });
   });
 
   describe("with basic array", () => {

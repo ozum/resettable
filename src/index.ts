@@ -248,9 +248,9 @@ function replace(
  * Resets given object to its original satate using given array of operations. Different from [JSON Patch](http://jsonpatch.com/) standard, uses more relaxed rules.
  * For example rejected operations does stop further execution, values to be replaced in arrays are searched in different index positions etc.
  * Please note: This function mutates `data` object.
- * @param   {Object}                      data                          - Data to be reset.
- * @param   {Array<Operation>}            history                       - Array of operations to execute.
- * @param   {OperationOptions}              [options]                     - Options
+ * @param   {Object}                      [data={}]                     - Data to be reset.
+ * @param   {Array<Operation>}            [history=[]]                  - Array of operations to execute.
+ * @param   {OperationOptions}            [options]                     - Options
  * @param   {boolean}                     [options.force=false]         - Forces operation even it is not safe.
  * @param   {boolean}                     [options.exact=false]         - Modifies find algorithm for arrays. If true, function searches given value in given exact position. Otherwise searches all array.
  * @param   {boolean}                     [options.checkDuplicate=true] - Checks duplicate values in array. If true,  when duplicate value is present, add/replace operation is skipped.
@@ -259,8 +259,8 @@ function replace(
  * @returns {Array<Operation>|undefined}                                - Returns array of operations which are skipped, `undefined` if all operations are applied.
  */
 export function reset(
-  data: object,
-  history: Operation[],
+  data: object = {},
+  history: Operation[] = [],
   { exact = false, checkDuplicate = true, force = false, addNotFound = true, clean = true, logger, name }: TrackedOptions = {},
 ): Operation[] | undefined {
   let oldValue: any;
@@ -294,11 +294,11 @@ export function reset(
 }
 /**
  * Compares two objects and returns operations needed to reset current object into original object.
- * @param   {object} currentObject  - Object to be used in `reset` function.
- * @param   {object} originalObject - Original object to get after reset operation.
- * @returns {Array<Operation>}      - Array of operations to apply to current object to get original object.
+ * @param   {object} [currentObject={}]   - Object to be used in `reset` function.
+ * @param   {object} [originalObject={}]  - Original object to get after reset operation.
+ * @returns {Array<Operation>}            - Array of operations to apply to current object to get original object.
  */
-export function diff(currentObject: object, originalObject: object): Operation[] {
+export function diff(currentObject: object = {}, originalObject: object = {}): Operation[] {
   return getDiff(currentObject, originalObject, { invertible: true });
 }
 
