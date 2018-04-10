@@ -13,7 +13,7 @@
     "file": "f() { P=$1; P=${P/src/lib}; P=${P/.ts/.js}; tsc-watch --onSuccess \"node -r source-map-support/register ${P}\"; }; f",
     "format": "moe-scripts format",
     "lint": "moe-scripts lint",
-    "prepublishOnly": "npm run build",
+    "xprepublishOnly": "npm run build",
     "release": "git checkout master && git pull origin master && standard-version && git push --follow-tags origin master && npm publish",
     "squash": "BRANCH=`git rev-parse --abbrev-ref HEAD` && git checkout master && git merge --squash $BRANCH && npm run commit",
     "test": "moe-scripts test",
