@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.1.11"></a>
+
+## [0.1.11](https://github.com/ozum/resettable/compare/v0.1.10...v0.1.11) (2018-04-12)
+
+### Bug Fixes
+
+* add Operation interface to the exported items for typescript ([014986d](https://github.com/ozum/resettable/commit/014986d))
+
 <a name="0.1.10"></a>
 
 ## [0.1.10](https://github.com/ozum/resettable/compare/v0.1.9...v0.1.10) (2018-04-10)
