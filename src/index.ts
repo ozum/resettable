@@ -306,8 +306,7 @@ export function diff(currentObject: object = {}, originalObject: object = {}): O
  * Checks whether value at given path is safe to change by comparing cuurent object to original object. May be used to
  * test whether values in given path are created/modified by user and safe to change. Like "in" operator, returns true
  * if there is no entry for given path. However, differently, it returns true if value exist in modified object but
- * it is different from original, assuming it is modified using this library and may be cahnged further.
- * lik
+ * it is different from original, assuming it is modified using this library and may be changed further.
  * @param   {object}                              currentObject   - Current object.
  * @param   {object}                              originalObject  - Original object.
  * @param   {Array<string|number>|string|number}  path            - Path to get result for.
