@@ -321,4 +321,4 @@ export function mayChange(currentObject: object, originalObject: object, path: P
   return changed || notExists;
 }
 
-export { Path, TrackedOptions, clone };
+export { Path, TrackedOptions, clone, Operation };
