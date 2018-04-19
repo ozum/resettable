@@ -1,5 +1,5 @@
 declare module "jiff" {
-  type Operation = { op: "test" | "remove" | "add" | "replace"; path: string; value: any; context?: object };
+  export type Operation = { op: "test" | "remove" | "add" | "replace"; path: string; value: any; context?: object };
   export function clone(data: object): object;
   export function diff(
     a: object,

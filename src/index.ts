@@ -1,12 +1,14 @@
+/// <reference path="./@types/external/jiff.d.ts" />
+/// <reference path="./@types/external/json8-pointer.d.ts" />
 import has from "lodash.has";
 import get from "lodash.get";
 import set from "lodash.set";
 import isEqual from "lodash.isEqual";
 import isPlainObject from "lodash.isplainobject";
 import { inspect } from "util";
-import { diff as getDiff, clone } from "jiff";
+import { diff as getDiff, clone, Operation } from "jiff";
 import { serialize, parse } from "json8-pointer";
-import { FindCallback, Operation, OperationOptions, Key, JsonPath, Data, Context, Path, Logger, TrackedOptions } from "./@types";
+import { FindCallback, OperationOptions, Key, JsonPath, Data, Context, Path, Logger, TrackedOptions } from "./@types";
 import { exec } from "child_process";
 
 const CHECK = "\u001b[32;1m✔\u001b[0m"; // Green ✔

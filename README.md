@@ -17,8 +17,8 @@ Reset object to its original state using JSON Patch with less strict rules. Mayb
 * [API](#api)
   * [Functions](#functions)
   * [Typedefs](#typedefs)
-  * [reset(data, history, [options]) ⇒ <code>Array.&lt;Operation&gt;</code> \| <code>undefined</code>](#resetdata-history-options-%E2%87%92-codearrayltoperationgtcode-%5C-codeundefinedcode)
-  * [diff(currentObject, originalObject) ⇒ <code>Array.&lt;Operation&gt;</code>](#diffcurrentobject-originalobject-%E2%87%92-codearrayltoperationgtcode)
+  * [reset([data], [history], [options]) ⇒ <code>Array.&lt;Operation&gt;</code> \| <code>undefined</code>](#resetdata-history-options-%E2%87%92-codearrayltoperationgtcode-%5C-codeundefinedcode)
+  * [diff([currentObject], [originalObject]) ⇒ <code>Array.&lt;Operation&gt;</code>](#diffcurrentobject-originalobject-%E2%87%92-codearrayltoperationgtcode)
   * [mayChange(currentObject, originalObject, path) ⇒ <code>boolean</code>](#maychangecurrentobject-originalobject-path-%E2%87%92-codebooleancode)
   * [Path : <code>string</code> \| <code>number</code> \| <code>Array.&lt;(number\|string)&gt;</code>](#path--codestringcode-%5C-codenumbercode-%5C-codearrayltnumber%5Cstringgtcode)
   * [Operation : <code>Object</code>](#operation--codeobjectcode)
@@ -69,18 +69,17 @@ fs.writeFileSync(`${__dirname}/../patch.json`, JSON.stringify({}, undefined, 2))
 ## Functions
 
 <dl>
-<dt><a href="#reset">reset(data, history, [options])</a> ⇒ <code><a href="#Operation">Array.&lt;Operation&gt;</a></code> | <code>undefined</code></dt>
+<dt><a href="#reset">reset([data], [history], [options])</a> ⇒ <code><a href="#Operation">Array.&lt;Operation&gt;</a></code> | <code>undefined</code></dt>
 <dd><p>Resets given object to its original satate using given array of operations. Different from <a href="http://jsonpatch.com/">JSON Patch</a> standard, uses more relaxed rules.
 For example rejected operations does stop further execution, values to be replaced in arrays are searched in different index positions etc.
 Please note: This function mutates <code>data</code> object.</p></dd>
-<dt><a href="#diff">diff(currentObject, originalObject)</a> ⇒ <code><a href="#Operation">Array.&lt;Operation&gt;</a></code></dt>
+<dt><a href="#diff">diff([currentObject], [originalObject])</a> ⇒ <code><a href="#Operation">Array.&lt;Operation&gt;</a></code></dt>
 <dd><p>Compares two objects and returns operations needed to reset current object into original object.</p></dd>
 <dt><a href="#mayChange">mayChange(currentObject, originalObject, path)</a> ⇒ <code>boolean</code></dt>
 <dd><p>Checks whether value at given path is safe to change by comparing cuurent object to original object. May be used to
 test whether values in given path are created/modified by user and safe to change. Like &quot;in&quot; operator, returns true
 if there is no entry for given path. However, differently, it returns true if value exist in modified object but
-it is different from original, assuming it is modified using this library and may be cahnged further.
-lik</p></dd>
+it is different from original, assuming it is modified using this library and may be changed further.</p></dd>
 </dl>
 
 ## Typedefs
@@ -94,7 +93,7 @@ lik</p></dd>
 
 <a name="reset"></a>
 
-## reset(data, history, [options]) ⇒ [<code>Array.&lt;Operation&gt;</code>](#Operation) \| <code>undefined</code>
+## reset([data], [history], [options]) ⇒ [<code>Array.&lt;Operation&gt;</code>](#Operation) \| <code>undefined</code>
 
 <p>Resets given object to its original satate using given array of operations. Different from <a href="http://jsonpatch.com/">JSON Patch</a> standard, uses more relaxed rules.
 For example rejected operations does stop further execution, values to be replaced in arrays are searched in different index positions etc.
@@ -108,8 +107,8 @@ Please note: This function mutates <code>data</code> object.</p>
 
 | Param                    | Type                                               | Default            | Description                                                                                                                              |
 | ------------------------ | -------------------------------------------------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| data                     | <code>Object</code>                                |                    | <p>Data to be reset.</p>                                                                                                                 |
-| history                  | [<code>Array.&lt;Operation&gt;</code>](#Operation) |                    | <p>Array of operations to execute.</p>                                                                                                   |
+| [data]                   | <code>Object</code>                                |                    | <p>Data to be reset.</p>                                                                                                                 |
+| [history]                | [<code>Array.&lt;Operation&gt;</code>](#Operation) | <code>[]</code>    | <p>Array of operations to execute.</p>                                                                                                   |
 | [options]                | <code>OperationOptions</code>                      |                    | <p>Options</p>                                                                                                                           |
 | [options.force]          | <code>boolean</code>                               | <code>false</code> | <p>Forces operation even it is not safe.</p>                                                                                             |
 | [options.exact]          | <code>boolean</code>                               | <code>false</code> | <p>Modifies find algorithm for arrays. If true, function searches given value in given exact position. Otherwise searches all array.</p> |
@@ -119,7 +118,7 @@ Please note: This function mutates <code>data</code> object.</p>
 
 <a name="diff"></a>
 
-## diff(currentObject, originalObject) ⇒ [<code>Array.&lt;Operation&gt;</code>](#Operation)
+## diff([currentObject], [originalObject]) ⇒ [<code>Array.&lt;Operation&gt;</code>](#Operation)
 
 <p>Compares two objects and returns operations needed to reset current object into original object.</p>
 
@@ -129,10 +128,10 @@ Please note: This function mutates <code>data</code> object.</p>
 <li>Array of operations to apply to current object to get original object.</li>
 </ul>  
 
-| Param          | Type                | Description                                              |
-| -------------- | ------------------- | -------------------------------------------------------- |
-| currentObject  | <code>object</code> | <p>Object to be used in <code>reset</code> function.</p> |
-| originalObject | <code>object</code> | <p>Original object to get after reset operation.</p>     |
+| Param            | Type                | Default         | Description                                              |
+| ---------------- | ------------------- | --------------- | -------------------------------------------------------- |
+| [currentObject]  | <code>object</code> | <code>{}</code> | <p>Object to be used in <code>reset</code> function.</p> |
+| [originalObject] | <code>object</code> | <code>{}</code> | <p>Original object to get after reset operation.</p>     |
 
 <a name="mayChange"></a>
 
@@ -141,8 +140,7 @@ Please note: This function mutates <code>data</code> object.</p>
 <p>Checks whether value at given path is safe to change by comparing cuurent object to original object. May be used to
 test whether values in given path are created/modified by user and safe to change. Like &quot;in&quot; operator, returns true
 if there is no entry for given path. However, differently, it returns true if value exist in modified object but
-it is different from original, assuming it is modified using this library and may be cahnged further.
-lik</p>
+it is different from original, assuming it is modified using this library and may be changed further.</p>
 
 **Kind**: global function  
 **Returns**: <code>boolean</code> - <ul>
