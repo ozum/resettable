@@ -1,6 +1,6 @@
 declare module "jiff" {
   export type Operation = { op: "test" | "remove" | "add" | "replace"; path: string; value: any; context?: object };
-  export function clone(data: object): object;
+  export function clone<T extends object>(data: T): T;
   export function diff(
     a: object,
     b: object,
