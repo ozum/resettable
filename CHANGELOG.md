@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.1.15"></a>
+
+## [0.1.15](https://github.com/ozum/resettable/compare/v0.1.14...v0.1.15) (2018-04-19)
+
+### Bug Fixes
+
+* add Typescript <reference> tags ([70c31ce](https://github.com/ozum/resettable/commit/70c31ce))
+
 <a name="0.1.14"></a>
 
 ## [0.1.14](https://github.com/ozum/resettable/compare/v0.1.13...v0.1.14) (2018-04-19)
