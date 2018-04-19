@@ -4,9 +4,9 @@ import set from "lodash.set";
 import isEqual from "lodash.isEqual";
 import isPlainObject from "lodash.isplainobject";
 import { inspect } from "util";
-import { diff as getDiff, Operation, clone } from "jiff";
+import { diff as getDiff, clone } from "jiff";
 import { serialize, parse } from "json8-pointer";
-import { FindCallback, OperationOptions, Key, JsonPath, Data, Context, Path, Logger, TrackedOptions } from "./@types";
+import { FindCallback, Operation, OperationOptions, Key, JsonPath, Data, Context, Path, Logger, TrackedOptions } from "./@types";
 import { exec } from "child_process";
 
 const CHECK = "\u001b[32;1m✔\u001b[0m"; // Green ✔
@@ -248,7 +248,7 @@ function replace(
  * Resets given object to its original satate using given array of operations. Different from [JSON Patch](http://jsonpatch.com/) standard, uses more relaxed rules.
  * For example rejected operations does stop further execution, values to be replaced in arrays are searched in different index positions etc.
  * Please note: This function mutates `data` object.
- * @param   {Object}                      [data={}]                     - Data to be reset.
+ * @param   {Object}                      [data]                        - Data to be reset.
  * @param   {Array<Operation>}            [history=[]]                  - Array of operations to execute.
  * @param   {OperationOptions}            [options]                     - Options
  * @param   {boolean}                     [options.force=false]         - Forces operation even it is not safe.

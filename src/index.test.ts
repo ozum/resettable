@@ -85,6 +85,18 @@ describe("reset", () => {
       expect(b).toEqual({});
       expect(unApplied.length).toBe(0);
     });
+
+    it("should reset with history undefined", () => {
+      const b = { name: "Julia", favorite: "blue" };
+      const unApplied = reset(b);
+      expect(b).toEqual({ name: "Julia", favorite: "blue" });
+      expect(unApplied.length).toBe(0);
+    });
+
+    it("should reset both data and history undefined", () => {
+      const unApplied = reset();
+      expect(unApplied.length).toBe(0);
+    });
   });
 
   describe("with basic array", () => {
@@ -331,6 +343,13 @@ describe("reset", () => {
       const unApplied = reset(modifiedB, diff(b, a), { force: true });
       expect(modifiedB).toEqual({ option: [3] });
       expect(unApplied.length).toBe(0);
+    });
+  });
+
+  describe("diff", () => {
+    it("should accept undefined", () => {
+      const ops = diff();
+      expect(ops).toEqual([]);
     });
   });
 });

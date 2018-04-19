@@ -84,5 +84,6 @@ export type Context = {
  * @property {string} path  - Path to make changes at.
  * @property {*}      value - Value to be used in operation.
  */
+export type Operation = { op: "test" | "remove" | "add" | "replace"; path: string; value: any; context?: object };
 
 const docMe = 1;
