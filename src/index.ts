@@ -1,5 +1,5 @@
-/// <reference path="./@types/external/jiff.d.ts" />
-/// <reference path="./@types/external/json8-pointer.d.ts" />
+/// <reference path="../@types/jiff.d.ts" />
+/// <reference path="../@types/json8-pointer.d.ts" />
 import has from "lodash.has";
 import get from "lodash.get";
 import set from "lodash.set";
