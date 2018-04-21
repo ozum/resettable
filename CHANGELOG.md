@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.1.18"></a>
+
+## [0.1.18](https://github.com/ozum/resettable/compare/v0.1.17...v0.1.18) (2018-04-21)
+
+### Bug Fixes
+
+* return undefined from reset if no operation remains ([27c8c38](https://github.com/ozum/resettable/commit/27c8c38))
+
 <a name="0.1.17"></a>
 
 ## [0.1.17](https://github.com/ozum/resettable/compare/v0.1.16...v0.1.17) (2018-04-19)
