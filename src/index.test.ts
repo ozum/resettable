@@ -51,7 +51,7 @@ describe("reset", () => {
       const b = { name: "Julia", language: "en" };
       const unApplied = reset(b, diff(b, a));
       expect(b).toEqual(a);
-      expect(unApplied.length).toBe(0);
+      expect(unApplied).toBeUndefined;
     });
 
     it("should reset deleted prop", () => {
@@ -59,7 +59,7 @@ describe("reset", () => {
       const b = {};
       const unApplied = reset(b, diff(b, a));
       expect(b).toEqual(a);
-      expect(unApplied.length).toBe(0);
+      expect(unApplied).toBeUndefined;
     });
 
     it("should reset replaced prop", () => {
@@ -67,7 +67,7 @@ describe("reset", () => {
       const b = { name: "Julia" };
       const unApplied = reset(b, diff(b, a));
       expect(b).toEqual(a);
-      expect(unApplied.length).toBe(0);
+      expect(unApplied).toBeUndefined;
     });
 
     it("should reset added/deleted/replaced prop", () => {
@@ -75,7 +75,7 @@ describe("reset", () => {
       const b = { name: "Julia", favorite: "blue" };
       const unApplied = reset(b, diff(b, a));
       expect(b).toEqual(a);
-      expect(unApplied.length).toBe(0);
+      expect(unApplied).toBeUndefined;
     });
 
     it("should reset undefined", () => {
@@ -83,19 +83,19 @@ describe("reset", () => {
       const b = { name: "Julia", favorite: "blue" };
       const unApplied = reset(b, diff(b, a));
       expect(b).toEqual({});
-      expect(unApplied.length).toBe(0);
+      expect(unApplied).toBeUndefined;
     });
 
     it("should reset with history undefined", () => {
       const b = { name: "Julia", favorite: "blue" };
       const unApplied = reset(b);
       expect(b).toEqual({ name: "Julia", favorite: "blue" });
-      expect(unApplied.length).toBe(0);
+      expect(unApplied).toBeUndefined;
     });
 
     it("should reset both data and history undefined", () => {
       const unApplied = reset();
-      expect(unApplied.length).toBe(0);
+      expect(unApplied).toBeUndefined;
     });
   });
 
@@ -105,7 +105,7 @@ describe("reset", () => {
       const b = { option: [0, 1, 2, 3, 4] };
       const unApplied = reset(b, diff(b, a));
       expect(b).toEqual(a);
-      expect(unApplied.length).toBe(0);
+      expect(unApplied).toBeUndefined;
     });
 
     it("should reset deleted prop", () => {
@@ -113,7 +113,7 @@ describe("reset", () => {
       const b = { option: [0, 1, 2] };
       const unApplied = reset(b, diff(b, a));
       expect(b).toEqual(a);
-      expect(unApplied.length).toBe(0);
+      expect(unApplied).toBeUndefined;
     });
 
     it("should reset replaced prop", () => {
@@ -121,7 +121,7 @@ describe("reset", () => {
       const b = { option: [9, 9, 9, 9] };
       const unApplied = reset(b, diff(b, a));
       expect(b).toEqual(a);
-      expect(unApplied.length).toBe(0);
+      expect(unApplied).toBeUndefined;
     });
 
     it("should reset added/deleted/replaced prop", () => {
@@ -129,7 +129,7 @@ describe("reset", () => {
       const b = { option: [1, 9, 3, 5, 4] };
       const unApplied = reset(b, diff(b, a));
       expect(b).toEqual(a);
-      expect(unApplied.length).toBe(0);
+      expect(unApplied).toBeUndefined;
     });
 
     it("should delete added prop if in exact position (options.exact = true)", () => {
@@ -137,7 +137,7 @@ describe("reset", () => {
       const b = { option: [0, 1, 2, 3, 4] };
       const unApplied = reset(b, diff(b, a), { exact: true });
       expect(b).toEqual(a);
-      expect(unApplied.length).toBe(0);
+      expect(unApplied).toBeUndefined;
     });
 
     it("should delete added prop when target array has no more elements", () => {
@@ -145,7 +145,7 @@ describe("reset", () => {
       const b = { option: [] };
       const unApplied = reset(b, diff(b, a));
       expect(b).toEqual(a);
-      expect(unApplied.length).toBe(0);
+      expect(unApplied).toBeUndefined;
     });
 
     it("sould clean object by default", () => {
@@ -153,7 +153,7 @@ describe("reset", () => {
       const b = { option: [1], code: { a: 1 } };
       const unApplied = reset(b, diff(b, a));
       expect(b).toEqual({ person: { detail: { name: "mike" } }, fav: [[1]] });
-      expect(unApplied.length).toBe(0);
+      expect(unApplied).toBeUndefined;
     });
 
     it("sould not clean object (options.clean = false)", () => {
@@ -161,7 +161,7 @@ describe("reset", () => {
       const b = { option: [1], code: { a: 1 } };
       const unApplied = reset(b, diff(b, a), { clean: false });
       expect(b).toEqual(a);
-      expect(unApplied.length).toBe(0);
+      expect(unApplied).toBeUndefined;
     });
   });
 
@@ -176,7 +176,7 @@ describe("reset", () => {
       const b = { name: "susan", address: { street: "other", no: [1, 2], option: [1, 9, 3, 4, 12] }, size: [{ x: 3, s: 1, n: "s" }] };
       const unApplied = reset(b, diff(b, a));
       expect(b).toEqual(a);
-      expect(unApplied.length).toBe(0);
+      expect(unApplied).toBeUndefined;
     });
   });
 
@@ -187,7 +187,7 @@ describe("reset", () => {
       const modifiedB = { name: "Julia" };
       const unApplied = reset(modifiedB, diff(b, a));
       expect(modifiedB).toEqual({ name: "Mike" });
-      expect(unApplied.length).toBe(0);
+      expect(unApplied).toBeUndefined;
     });
 
     it("should add replaced data even old data is modified", () => {
@@ -196,7 +196,7 @@ describe("reset", () => {
       const modifiedB = { name: "Julia" };
       const unApplied = reset(modifiedB, diff(b, a));
       expect(modifiedB).toEqual({ color: { id: 1, detail: { lang: "en", name: "red" } }, name: "Julia" });
-      expect(unApplied.length).toBe(0);
+      expect(unApplied).toBeUndefined;
     });
 
     it("should not remove added prop if it is modified by user", () => {
@@ -232,7 +232,7 @@ describe("reset", () => {
       const modifiedB = { name: "Tanja" };
       const unApplied = reset(modifiedB, diff(b, a), { force: true });
       expect(modifiedB).toEqual({ name: "Mike" });
-      expect(unApplied.length).toBe(0);
+      expect(unApplied).toBeUndefined;
     });
 
     it("should not add prop if user deleted", () => {
@@ -270,7 +270,7 @@ describe("reset", () => {
       const modifiedB = { option: [0, 999, 1, 2, 3, 4] };
       const unApplied = reset(modifiedB, diff(b, a));
       expect(modifiedB).toEqual({ option: [0, 999, 1, 2, 3] });
-      expect(unApplied.length).toBe(0);
+      expect(unApplied).toBeUndefined;
     });
 
     it("should delete added prop even modified position by user", () => {
@@ -279,7 +279,7 @@ describe("reset", () => {
       const modifiedB = { option: [4, 0, 1, 2, 3] };
       const unApplied = reset(modifiedB, diff(b, a));
       expect(modifiedB).toEqual({ option: [0, 1, 2, 3] });
-      expect(unApplied.length).toBe(0);
+      expect(unApplied).toBeUndefined;
     });
 
     it("should delete added prop in nearest position", () => {
@@ -288,7 +288,7 @@ describe("reset", () => {
       const modifiedB = { option: [4, 0, 1, 2, 3, 4] };
       const unApplied = reset(modifiedB, diff(b, a));
       expect(modifiedB).toEqual({ option: [4, 0, 1, 2, 3] });
-      expect(unApplied.length).toBe(0);
+      expect(unApplied).toBeUndefined;
     });
 
     it("should not delete added prop if not in exact position (options.exact = true)", () => {
@@ -324,7 +324,7 @@ describe("reset", () => {
       const modifiedB = { option: [0, 1, 2, 3, 99] };
       const unApplied = reset(modifiedB, diff(b, a), { checkDuplicate: false });
       expect(modifiedB).toEqual({ option: [0, 1, 2, 3, 3] });
-      expect(unApplied.length).toBe(0);
+      expect(unApplied).toBeUndefined;
     });
 
     it("should not create array if there isn't", () => {
@@ -342,7 +342,7 @@ describe("reset", () => {
       const modifiedB = {};
       const unApplied = reset(modifiedB, diff(b, a), { force: true });
       expect(modifiedB).toEqual({ option: [3] });
-      expect(unApplied.length).toBe(0);
+      expect(unApplied).toBeUndefined;
     });
   });
 

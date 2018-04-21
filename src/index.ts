@@ -292,7 +292,7 @@ export function reset(
     cleanObject(data);
   }
 
-  return remaining;
+  return remaining.length > 0 ? remaining : undefined;
 }
 /**
  * Compares two objects and returns operations needed to reset current object into original object.
