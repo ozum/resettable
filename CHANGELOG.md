@@ -1,6 +1,10 @@
 # Change Log
 
-This project adheres to [Semantic Versioning](http://semver.org/).
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+<a name="0.1.19"></a>
+
+## [0.1.19](https://github.com/ozum/resettable/compare/v0.1.18...v0.1.19) (2018-05-11)
 
 <a name="0.1.18"></a>
 
